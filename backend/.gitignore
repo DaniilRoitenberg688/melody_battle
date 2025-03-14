@@ -1,0 +1,8 @@
+.venv
+.idea
+.vscode
+.flaskenv
+__pycache__
+.ropeproject
+instance
+.env
