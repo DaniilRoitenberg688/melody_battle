@@ -9,14 +9,12 @@ class User(db.Model):
 
 
     def set_password(self, password):
-        if not password:
-            pass
         self.password = generate_password_hash(password)
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
-    def as_dict(self):
+    def to_dict(self):
         return {
             'id': self.id,
             'email': self.email,

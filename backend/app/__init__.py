@@ -16,6 +16,9 @@ def init_app():
     from app.routes.main import bp as main_bp
     app.register_blueprint(main_bp, url_prefix='/api')
 
+    from app.routes.user import bp as user_bp
+    app.register_blueprint(user_bp, url_prefix='/api/user')
+
     return app
 
 from app.models import *
