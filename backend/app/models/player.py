@@ -6,7 +6,7 @@ class Player(db.Model):
     battle_id = db.Column(db.Integer, db.ForeignKey('melody_battle.id'), nullable=False)
     battle = db.relationship('MelodyBattle', backref=db.backref('players', lazy=True))
 
-    def as_dict(self):
+    def to_dict(self):
         return {
             'id': self.id,
             'name': self.name,
