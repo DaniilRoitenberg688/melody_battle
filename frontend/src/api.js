@@ -1,6 +1,6 @@
 
-let host = "http://localhost:5000/api";
-
+// let host = "http://localhost:5000/api";
+let host = "/api"
 
 async function register(userData){
     let request = await fetch(host + '/user/register', {
@@ -18,6 +18,7 @@ async function login(userData){
     let request = await fetch(host + '/user/login', {method: "POST",headers: { "Content-Type": "application/json" },body: JSON.stringify(userData)})
     let status_code = request.status;
     let data = await request.json();
+    console.log({data: data, status_code: status_code})
     return {data: data, status_code: status_code};
 }
 

@@ -1,0 +1,35 @@
+services:
+
+
+  backend:
+    build: ./backend
+    container_name: mb_backend
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: sqlite:///melody.db
+      FLASK_ENV: production
+      FLASK_APP: main.py
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  nginx:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: mb_nginx
+    ports:
+      - "127.0.0.1:8383:80"
+    depends_on:
+      - backend
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
