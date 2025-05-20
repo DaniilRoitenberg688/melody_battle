@@ -11,6 +11,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Скопируй весь код
 COPY . .
 
+RUN flask db upgrade
+
 # Открой порт 5000
 EXPOSE 5000
 
