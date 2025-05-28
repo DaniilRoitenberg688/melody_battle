@@ -6,3 +6,4 @@ __pycache__
 .ropeproject
 instance
 .env
+app/static/melody_battles_images
