@@ -24,7 +24,7 @@ export default {
 <!--          <img class="card-img-top" :src="`../../backend/app/static/melody_battles_images/12.png`" />-->
 <!--          <img class="card-img-top" src="https://localhost:5000/app/static/melody_battles_images/12.png" />-->
 <!--          <img src="url">-->
-          <img :src="`../../public/static/melody_battles_images/${item.id}.png`" class="card-img-top" @click="console.log(item.image_url)"  />
+          <img :src="`static/${item.id}.png`" class="card-img-top" @click="console.log(item.image_url)"  />
           <h2 class="card-title ms-3">{{item.name}}</h2>
         </div>
       </div>
