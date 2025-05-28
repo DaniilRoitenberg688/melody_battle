@@ -12,7 +12,7 @@ import requests
 def load_melody_battle_image(url, name):
     request = requests.get(f'{url}')
 
-    with open(f'../frontend/public/static/melody_battles_images/{name}.png', 'wb') as file:
+    with open(f'app/static/melody_battles_images/{name}.png', 'wb') as file:
         file.write(request.content)
 
 

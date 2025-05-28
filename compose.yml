@@ -18,6 +18,9 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+    volumes:
+      - ./backend/instance:/app/backend/instance:z
+      - ./static:/app/app/static/melody_battles_images
 
   nginx:
     build:
@@ -25,7 +28,7 @@ services:
       dockerfile: Dockerfile
     container_name: mb_nginx
     ports:
-      - "127.0.0.1:8383:80"
+      - "127.0.0.1:5252:80"
     depends_on:
       - backend
     logging:
@@ -33,3 +36,6 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+    volumes:
+
+      - ./static:/app/public/static/melody_battles_images

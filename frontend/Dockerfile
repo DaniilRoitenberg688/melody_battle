@@ -8,6 +8,7 @@ WORKDIR /app
 COPY package*.json .
 RUN npm install
 
+
 # Скопируем всё остальное и соберём проект
 COPY . .
 ENV VITE_API_BASE_URL=/api
