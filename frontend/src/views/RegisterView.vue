@@ -56,6 +56,7 @@ export default {
         if (data.status_code === 201) {
           this.$router.push('/login');
         } else {
+          console.log(data.data)
           console.log(data.data.reason)
           this.error_message = data.data.reason
 

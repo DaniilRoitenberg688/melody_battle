@@ -3,7 +3,7 @@ from functools import wraps
 
 import jwt
 from werkzeug.exceptions import BadRequest, NotFound
-from errors import MissingData, ValidationError, TokenError
+from errors import MissingData, ValidationError, TokenError, NotUniqError
 
 from flask import request, current_app
 
@@ -21,6 +21,8 @@ def create_response(func):
             return {'error': 'missing data', 'reason': str(e)}, 400
         except ValidationError as e:
             return {'error': 'invalid data', 'reason': str(e)}, 400
+        except NotUniqError as e:
+            return {'error': 'not uniq data', 'reason': str(e)}, 400
 
         except TokenError as e:
             return {'error': 'token error', 'reason': str(e)}, 401

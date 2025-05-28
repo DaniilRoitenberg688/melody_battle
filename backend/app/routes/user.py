@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request, current_app
 from app.models import User
-from errors import MissingData, ValidationError
+from errors import MissingData, ValidationError, NotUniqError
 from werkzeug.exceptions import NotFound
 from app.helpers import create_response, requires_user
 from app import db
@@ -21,6 +21,9 @@ def create_user():
 
     if not login or not email or not password:
         raise MissingData('not enough data in register data')
+
+    if User.query.filter_by(email=email).all:
+        raise NotUniqError('your email is not uniq')
 
     user.login = login
     user.email = email
