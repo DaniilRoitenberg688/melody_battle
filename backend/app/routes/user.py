@@ -22,7 +22,7 @@ def create_user():
     if not login or not email or not password:
         raise MissingData('not enough data in register data')
 
-    if User.query.filter_by(email=email).all:
+    if User.query.filter_by(email=email).all():
         raise NotUniqError('your email is not uniq')
 
     user.login = login
