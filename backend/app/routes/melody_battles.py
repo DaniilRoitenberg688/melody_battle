@@ -32,3 +32,11 @@ def create_melody_battle_route(user):
     db.session.commit()
     return jsonify(melody_battle.to_dict()), 201
 
+@bp.route('/<mb_id>', methods=['DELETE'])
+def delete_melody(mb_id):
+    mb = db.session.get(MelodyBattle, mb_id)
+    if not mb:
+        raise NotFound
+    db.session.delete(mb)
+    db.session.commit()
+    return jsonify({'result': 'ok'}), 204

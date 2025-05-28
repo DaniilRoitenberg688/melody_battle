@@ -1,7 +1,7 @@
 <script>
 import NavBar from "@/components/navBar.vue";
 import MelodyBattleList from "@/components/melodyBattleList.vue";
-import {getUser, getMelodyBattleApi} from "@/api.js";
+import {getUser, getMelodyBattleApi, deleteMelodyBattle} from "@/api.js";
 export default {
   name: "MainView",
   components: {NavBar, MelodyBattleList},
@@ -28,6 +28,14 @@ export default {
     request = await getMelodyBattleApi(token);
     this.melodyBattles = request.data;
 
+  },
+  methods: {
+    async deleteMb(id) {
+      this.melodyBattles = this.melodyBattles.filter(item => item.id !== id);
+      let resp = await deleteMelodyBattle(this.token, id)
+      console.log(resp);
+
+    }
   }
 }
 </script>
@@ -35,7 +43,7 @@ export default {
 <template>
   <NavBar :username="user.login" />
   <button class="position-absolute end-0 bottom-0 btn me-5 mb-5 text-center px-3 py-2 fs-5" @click="this.$router.push('/create-melody-battle')" style="color: black; background-color:rgba(0,255,255,0.98);">+</button>
-  <MelodyBattleList :list="melodyBattles" />
+  <MelodyBattleList :list="melodyBattles" @delete="deleteMb"/>
 </template>
 
 <style scoped>

@@ -1,6 +1,7 @@
 
-// let host = "http://localhost:5000/api";
-let host = "/api"
+
+let host = "http://localhost:5000/api";
+// let host = "/api"
 
 async function register(userData){
     let request = await fetch(host + '/user/register', {
@@ -43,4 +44,12 @@ async function getMelodyBattleApi(token){
     return {data: data, status_code: status_code};
 }
 
-export {register, login, getUser, createMelodyBattleApi, getMelodyBattleApi, host};
+async function deleteMelodyBattle(token, id){
+    console.log(typeof id);
+    let request = await fetch(host + `/melody_battle/${id}`, {method: "DELETE",headers: {"Authorization": `Bearer ${token}`}})
+    let status_code = request.status;
+    let data = await request.json();
+    return {data: data, status_code: status_code};
+}
+
+export {register, login, getUser, createMelodyBattleApi, getMelodyBattleApi, host, deleteMelodyBattle};
