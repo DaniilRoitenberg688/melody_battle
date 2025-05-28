@@ -19,7 +19,7 @@ services:
         max-size: "10m"
         max-file: "3"
     volumes:
-      - ./backend/instance:/app/backend/instance:z
+      - ./backend/instance:/app/instance:z
       - ./static:/app/app/static/melody_battles_images
 
   nginx:
