@@ -1,7 +1,7 @@
 
 
-let host = "http://localhost:5000/api";
-// let host = "/api"
+// let host = "http://localhost:5000/api";
+let host = "/api"
 
 async function register(userData){
     let request = await fetch(host + '/user/register', {
