@@ -38,4 +38,4 @@ services:
         max-file: "3"
     volumes:
 
-      - ./static:/app/public/static/melody_battles_images
+      - ./static:/app/static

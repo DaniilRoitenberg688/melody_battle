@@ -18,6 +18,8 @@ RUN npm run build
 # 2. Этап запуска (release stage)
 FROM nginx:alpine
 
+RUN mkdir static
+
 # Скопируем собственный конфиг Nginx (если у вас есть такой)
 # Предположим, что ваш конфиг лежит в корне проекта и называется nginx.conf
 COPY nginx.conf /etc/nginx/conf.d/default.conf
